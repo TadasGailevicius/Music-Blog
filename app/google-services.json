@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1036667976358",
+    "firebase_url": "https://musicblog-844b4.firebaseio.com",
+    "project_id": "musicblog-844b4",
+    "storage_bucket": "musicblog-844b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036667976358:android:eced2e7eb1ddaaea",
+        "android_client_info": {
+          "package_name": "com.tedm.musicblog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036667976358-3of87vbjbgmk30m2blqn9eavr78a3a33.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tedm.musicblog",
+            "certificate_hash": "00dc379afdaecda453acf998722262ebc221156e"
+          }
+        },
+        {
+          "client_id": "1036667976358-j04a9d7g8p3877c5c0t8027394uls1u7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyUSS-ZmdCsBpcma7N2w5y-S9J9z9ySHs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036667976358-j04a9d7g8p3877c5c0t8027394uls1u7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
