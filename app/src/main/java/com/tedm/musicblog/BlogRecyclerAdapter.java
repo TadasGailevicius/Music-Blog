@@ -173,6 +173,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             @Override
             public void onClick(View v) {
                 Intent commentIntent = new Intent(context,CommentsActivity.class);
+                commentIntent.putExtra("blog_post_id",blogPostId);
                 context.startActivity(commentIntent);
             }
         });
