@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -42,15 +44,17 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapter.ViewHolder> {
 
     public List<BlogPost> blog_list;
+    public List<User> user_list;
     public Context context;
 
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
 
 
-    public BlogRecyclerAdapter(List<BlogPost> blog_list){
+    public BlogRecyclerAdapter(List<BlogPost> blog_list, List<User> user_list){
 
         this.blog_list = blog_list;
+        this.user_list = user_list;
 
     }
 
@@ -66,7 +70,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
 
         viewHolder.setIsRecyclable(false);
 
@@ -82,23 +86,19 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         if(image_url != null)
         viewHolder.setBlogImage(image_url,thumbUri);
 
-        String user_id = blog_list.get(i).getUser_id();
-        // User date will be retrieved here...
-        firebaseFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+        String blog_user_id = blog_list.get(i).getUser_id();
 
-                if(task.isSuccessful()){
-                    String userName = task.getResult().getString("name");
-                    String userImage = task.getResult().getString("image");
+        if(blog_user_id.equals(currentUserId)){
+            viewHolder.blogDeleteBtn.setEnabled(true);
+            viewHolder.blogDeleteBtn.setVisibility(View.VISIBLE);
 
-                    viewHolder.setUserData(userName,userImage);
-                } else {
-                    // Firebase Exceptions
-                }
+        }
 
-            }
-        });
+        String userName = user_list.get(i).getName();
+        String userImage = user_list.get(i).getImage();
+
+        viewHolder.setUserData(userName,userImage);
+
 
 
 
@@ -178,6 +178,22 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
             }
         });
 
+        viewHolder.blogDeleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                firebaseFirestore.collection("Posts").document(blogPostId).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                        blog_list.remove(i);
+                        user_list.remove(i);
+                    }
+                });
+
+            }
+        });
+
 
 
 
@@ -203,6 +219,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
         private TextView blogLikeCount;
 
         private ImageView blogCommentBtn;
+        private Button blogDeleteBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -211,6 +228,7 @@ public class BlogRecyclerAdapter extends RecyclerView.Adapter<BlogRecyclerAdapte
 
             blogLikeBtn = mView.findViewById(R.id.blog_like_btn);
             blogCommentBtn = mView.findViewById(R.id.blog_comment_icon);
+            blogDeleteBtn = mView.findViewById(R.id.blog_delete_btn);
         }
 
         public void setDescText(String descText){
