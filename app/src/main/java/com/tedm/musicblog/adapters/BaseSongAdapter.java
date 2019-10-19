@@ -1,5 +1,6 @@
 package com.tedm.musicblog.adapters;
 
+import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -22,8 +23,16 @@ public class BaseSongAdapter<V extends RecyclerView.ViewHolder> extends Recycler
         return 0;
     }
 
+    // Missing getItemViewType. Will Add later
+
     public class ItemHolder extends RecyclerView.ViewHolder{
         public ItemHolder(View view) {super(view);}
+    }
+
+    // Need to declare sourceType TimberUtils.IdType sourceType
+    public void playAll(final Activity context, final long[] list, int position,
+                        final long sourceId, final boolean forceShuffle ){
+
     }
 
 
