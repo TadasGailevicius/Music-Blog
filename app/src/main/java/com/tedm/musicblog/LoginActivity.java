@@ -21,6 +21,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
     private EditText loginEmailText;
     private EditText loginPassText;
+
     private Button loginBtn;
     private Button loginRegBtn;
 

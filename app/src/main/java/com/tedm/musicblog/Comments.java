@@ -11,6 +11,8 @@ public class Comments {
 
     }
 
+
+
     public Comments(String message, String user_id, Date timestamp) {
         this.message = message;
         this.user_id = user_id;

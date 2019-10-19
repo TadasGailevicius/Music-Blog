@@ -51,7 +51,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:padding="8dp"
-        android:src="@drawable/ellipse"
+        android:src="@mipmap/action_send_grey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

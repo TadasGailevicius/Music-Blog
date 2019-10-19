@@ -9,6 +9,7 @@ public class BlogPost extends BlogPostId{
     public String desc;
     public String image_thumb;
 
+
     public Date timestamp;
 
     public BlogPost(){

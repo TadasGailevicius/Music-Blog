@@ -3,6 +3,7 @@ package com.tedm.musicblog;
 public class User {
 
     public String image,name;
+    public String Activity; // Updated User class variable
 
     public User(){
 

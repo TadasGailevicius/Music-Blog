@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +23,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText emailField;
     private EditText passwordField;
     private EditText passwordConfirmField;
+    // New Idea
+    private EditText date_birth;
+    private RadioButton sex;
+
+
     private Button reg_btn;
     private Button reg_login_btn;
     private ProgressBar reg_progress;
