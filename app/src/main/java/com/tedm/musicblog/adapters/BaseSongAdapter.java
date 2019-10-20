@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.tedm.musicblog.models.Song;
+
 public class BaseSongAdapter<V extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<V> {
 
     @Override
@@ -31,8 +33,9 @@ public class BaseSongAdapter<V extends RecyclerView.ViewHolder> extends Recycler
 
     // Need to declare sourceType TimberUtils.IdType sourceType
     public void playAll(final Activity context, final long[] list, int position,
-                        final long sourceId, final boolean forceShuffle ){
+                        final long sourceId, final boolean forceShuffle, final Song currentSong, boolean navigateNowPlaying){
 
+        // Waiting for code.
     }
 
 
