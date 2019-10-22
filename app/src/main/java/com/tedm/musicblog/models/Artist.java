@@ -8,16 +8,17 @@ public class Artist {
     public final int songCount;
 
     public Artist() {
-        this.albumCount = -1;
         this.id = -1;
         this.name = "";
         this.songCount = -1;
+        this.albumCount = -1;
     }
 
-    public Artist(int albumCount, long id, String name, int songCount) {
-        this.albumCount = albumCount;
-        this.id = id;
-        this.name = name;
-        this.songCount = songCount;
+    public Artist(long _id, String _name, int _albumCount, int _songCount) {
+        this.id = _id;
+        this.name = _name;
+        this.songCount = _songCount;
+        this.albumCount = _albumCount;
     }
+
 }
